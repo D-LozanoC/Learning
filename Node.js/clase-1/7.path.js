@@ -1,9 +1,9 @@
-const path = require('node:path');
+const path = require('node:path')
 
 // barra separadora de carpetas según SO
 console.log(path.sep)
 
-//unir rutas con path.join
+// unir rutas con path.join
 const filePath = path.join('content', 'subfolder', 'test.txt')
 console.log(filePath)
 

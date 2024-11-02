@@ -1,14 +1,19 @@
 {
-  "name": "nodejs",
+  "name": "node",
   "version": "1.0.0",
-  "description": "Aprendiendo node.js",
+  "description": "- Diferencias entre ECMAScript y CommonJS\r - Importación de modulos nativos\r     - OS (Operating System)\r     - FS (File System)\r         - Read File (Sync & Async)\r             - ReadFileSync(...) //Lee el archivo de forma sincrona\r             - ReadFile(...) //Lee el archivo con un callback\r             - \"node:fs/promises\" ReadFile(...) //Lee el archivo con promesas .then\r             - \"node:fs/promises\" ;(async ()=>{const varT = await ReadFile(...)})() //Lee el archivo con un IIFE = Inmediatly Invoked Function Expression si esta en cjs\r             - \"node:fs/promises\" const varT = await ReadFile(...) //Lee el archivo si esta en mjs\r             - Promises.All([ReadFile(...), ReadFile(...)]).then(...) //Lee los archivos de manera paralela\r     - Path\r     - Process\r     - HTTP (Creación de servidores)\r - npm (Node Package Manager) ==> Es un registro con muchas dependencias y paquetes descargables & es la linea de comandos usada para instalar o manejar y administrar nuestro proyecto\r     - <code>npm init</code> (Crear package.json)\r     - <code>npm i \"dependency name\"</code> (Instalar las dependencias que necesitemos) [NPM JS | Registro de dependencias](https://www.npmjs.com/)\r     - ^version (Siempre tendrá actualizadas las versiones)\r     - Dependencias de Producción y de Desarrollo",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch ./clase-2/1.http.js"
   },
-  "author": "David Alexis Lozano Clavijo",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
-  "dependencies": {
-    "picocolors": "^1.1.1"
+  "devDependencies": {
+    "standard": "^17.1.2"
+  },
+  "eslintConfig": {
+    "extends": "standard"
   }
 }

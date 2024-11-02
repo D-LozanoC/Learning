@@ -13,7 +13,51 @@
             - Promises.All([ReadFile(...), ReadFile(...)]).then(...) //Lee los archivos de manera paralela
     - Path
     - Process
+    - HTTP (Creación de servidores)
 - npm (Node Package Manager) ==> Es un registro con muchas dependencias y paquetes descargables & es la linea de comandos usada para instalar o manejar y administrar nuestro proyecto
     - <code>npm init</code> (Crear package.json)
     - <code>npm i "dependency name"</code> (Instalar las dependencias que necesitemos) [NPM JS | Registro de dependencias](https://www.npmjs.com/)
     - ^version (Siempre tendrá actualizadas las versiones)
+    - Dependencias de Producción y de Desarrollo
+- ## Express
+    - Facilitar el codigo
+    - Archivos estaticos
+    - Desactivar cabeceras
+    - Importar json
+    - Middlewares
+- ## REST
+    - Arquitectura de Software
+    - 2000 - Roy Fielding
+    - Principios en los que se basa REST
+        - Escalabilidad
+        - Portabilidad
+        - Simplicidad
+        - Visibilidad
+        - Fácil de modificar
+        - Fiabilidad
+    - Seis pilares
+        - Recursos
+            - Puede ser algo
+            - Colecciones de cosas
+            - Cada recurso se identifica con una URL
+        - Métodos o Verbos HTTP
+            - Para definir las operaciones que se pueden realizar con los recursos
+            - Acciones basicas de un CRUD
+        - Representaciones
+            - JSON, XML, HTML, etc...
+            - El cliente decide que la representación del recurso
+        - Stateless
+            - El servidor no debe mantener ningún estado para procesar la request
+            - El backend no debe guardar información para saber como responder a la request
+        - Interfaz uniforme
+            - Todas las URL deben hacer lo mismo
+        - Separación de conceptos
+            - Permite que el cliente y el servidor evolucionen de forma separada
+- ## Zod
+    - Esquemas para validación de datos
+- ## CORS
+    - Pasar headers con el origen a la URL que requiere la data
+    - Access-Control-Allow-Origin -> Añade la cabecera de las URL's que estan autorizadas a acceder a la API
+    - Access-Control-Allow-Methods -> Añade los métodos que las URL's pueden usar
+    - CORS PRE FLIGHT -> OPTIONS -> GET, POST, PUT, DELETE
+    - CORS tiene una dependencia que permite ahorrar codigo al automatizar el app.options y el cambio de cabeceras. Dentro del uso de cors() se puede definir lo que queremos añadir
