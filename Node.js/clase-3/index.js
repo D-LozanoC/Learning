@@ -9,20 +9,7 @@ const app = express()
 app.disable('x-powered-by')
 
 app.use(express.json())
-app.use(cors({
-    origin: (origin, callbacks) => {
-        const ACCEPTED_ORIGINS = [
-            'http://localhost:8080',
-            'https://api.example.com',
-            'https://api.another-example.com' // add more origins as needed
-        ]
-        if (ACCEPTED_ORIGINS.includes(origin)) {
-            callbacks(null, true)
-        } else {
-            callbacks(new Error('Not allowed by CORS'))
-        }
-    }
-})) // *
+app.use(cors()) // *
 
 app.use((err, req, res, next) => {
     console.error(err.stack)
