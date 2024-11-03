@@ -24,6 +24,15 @@ app.use(cors({
     }
 })) // *
 
+app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(err.status || 500).json({
+        error: {
+            message: err.message || 'Error interno del servidor'
+        }
+    })
+})
+
 app.get('/', (req, res) => {
     res.send('<h1>Bienvenid@ al servidor</h1>')
 })
