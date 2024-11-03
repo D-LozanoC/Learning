@@ -25,7 +25,7 @@ app.use(cors({
 })) // *
 
 app.get('/', (req, res) => {
-    res.send('Hello, World!')
+    res.send('<h1>Bienvenid@ al servidor</h1>')
 })
 
 app.get('/movies', (req, res) => {
