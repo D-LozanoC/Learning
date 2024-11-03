@@ -61,3 +61,20 @@
     - Access-Control-Allow-Methods -> Añade los métodos que las URL's pueden usar
     - CORS PRE FLIGHT -> OPTIONS -> GET, POST, PUT, DELETE
     - CORS tiene una dependencia que permite ahorrar codigo al automatizar el app.options y el cambio de cabeceras. Dentro del uso de cors() se puede definir lo que queremos añadir
+- # Deployment con Vercel
+    - Archivo principal **index**.js
+    - Archivo de configuración vercel.json
+    - Ha de tener builds (src, use) y routes (src, dest)
+- # MVC
+    - Flexibilidad al momento de cambiar los modelos, controladores y vistas
+    - ## Modelo
+        - Encargado de la lógica de negocio
+        - Envia los datos
+        - Lee los datos
+    - ## Controllador
+        - Encargado de hacer de intermediario entre el modelo y la vista
+        - Inicializa la vista
+        - Lee y modifica los datos
+    - ## Vista
+        - Interfaz de usuario
+        - Manda acciones al controlador
