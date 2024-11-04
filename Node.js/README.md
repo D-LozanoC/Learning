@@ -87,3 +87,21 @@ Cosas que aprendí:
     - Mysql2
     - Inyección de dependencias
     - Deployment de BD con Vercel
+- # Protocolos
+    - ## HTTP
+        - Usa TCP como protocolo de transporte
+        - Stateless => Puede ser cacheable
+        - Para recursos (html, js, img)
+        - Rest API
+        - Unidireccional
+        - No es event driven
+        - El usuario hace una petición y el servidor responde
+    - ## Web Sockets
+        - Usa TCP como protocolo de transporte
+        - Stateful => No cacheable
+        - Real time
+        - Información de ida y venida
+        - Poca latencia
+        - Bidireccional
+        - Es event driven
+        - Petición y respuesta de inicio, pero ahora vamos a tener una conexión persistente con web sockets, el servidor cuando quiera puede enviar respuestas al usuario, luego se puede cerrar la conexión
