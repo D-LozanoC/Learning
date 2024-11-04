@@ -1,5 +1,7 @@
 # Aprendiendo Node.js
 
+Cosas que aprendí:
+
 - Diferencias entre ECMAScript y CommonJS
 - Importación de modulos nativos
     - OS (Operating System)
@@ -67,6 +69,7 @@
     - Ha de tener builds (src, use) y routes (src, dest)
 - # MVC
     - Flexibilidad al momento de cambiar los modelos, controladores y vistas
+    - Mayor escalabilidad y mantenimiento
     - ## Modelo
         - Encargado de la lógica de negocio
         - Envia los datos
@@ -78,3 +81,9 @@
     - ## Vista
         - Interfaz de usuario
         - Manda acciones al controlador
+- # Conexión a Bases de datos
+    - DBngin
+    - TablePlus
+    - Mysql2
+    - Inyección de dependencias
+    - Deployment de BD con Vercel
