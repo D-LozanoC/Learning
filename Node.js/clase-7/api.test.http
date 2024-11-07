@@ -1,0 +1,22 @@
+### Get the server
+GET http://localhost:3000/
+
+### Post a user
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "username": "mihds",
+    "password": "12345678",
+    "email": "midu@gmail.com"
+}
+
+### Login
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "mihds",
+    "password": "12345678",
+    "email": "midu@gmail.com"
+}

@@ -105,3 +105,10 @@ Cosas que aprendí:
         - Bidireccional
         - Es event driven
         - Petición y respuesta de inicio, pero ahora vamos a tener una conexión persistente con web sockets, el servidor cuando quiera puede enviar respuestas al usuario, luego se puede cerrar la conexión
+- Uso de **socket.io** para Web Sockets
+- JWT (JSON web token) -> Para la creación de sesiones y logins
+- CookieParser y creación de cookies
+- Uso de templates para las vistas del servidor
+- Bcrypt para la encriptación de datos
+- DBLocal para tener una case de datos local
+- Dotenv de forma nativa con process.loadEnvFile() -> creación de archivo config.js para las variables por defecto del .env

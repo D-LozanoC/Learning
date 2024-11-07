@@ -1,0 +1,261 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+</head>
+<style>
+    /* General Styles */
+    body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    h2 {
+        color: #333;
+        text-align: center;
+    }
+
+    .container,
+    .form-container {
+        background-color: #fff;
+        padding: 20px;
+        margin: 10px;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    .container h2 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #555;
+        margin: 10px 0 20px;
+    }
+
+    /* Button Styles */
+    button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #close-session {
+        background-color: #f44336;
+    }
+
+    #close-session:hover,
+    button[type="submit"]:hover {
+        background-color: #d32f2f;
+    }
+
+    button[type="submit"] {
+        background-color: #4CAF50;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #388e3c;
+    }
+
+    /* Form Styles */
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    label {
+        font-size: 0.9em;
+        color: #666;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+        transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        outline: none;
+        border-color: #4CAF50;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+
+        .container,
+        .form-container {
+            width: 90%;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        button,
+        input[type="text"],
+        input[type="password"] {
+            font-size: 0.9em;
+        }
+    }
+</style>
+
+<body>
+    <% if (typeof username !=='undefined' ) { %>
+        <div class="container">
+            <h2>Hola <%= username %>!</h2>
+            <p>Estas en el panel de administración</p>
+            <button id="close-session">Cerrar Sesión</button>
+        </div>
+        <% } %>
+
+            <% if (typeof username==='undefined' ) { %>
+                <div class="form-container">
+                    <form id="login-form">
+                        <h2>Login</h2>
+                        <label for="login-username">Username</label>
+                        <input type="text" id="login-username" name="username" required>
+
+                        <label for="login-email">Email</label>
+                        <input type="text" id="login-email" name="email" required>
+
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" name="password" required>
+
+                        <button type="submit">Login</button>
+                        <span>&nbsp;</span>
+                    </form>
+                </div>
+
+                <div class="form-container">
+                    <form id="register-form">
+                        <h2>Register</h2>
+                        <label for="register-username">Username</label>
+                        <input type="text" id="register-username" name="username" required>
+
+                        <label for="register-email">Email</label>
+                        <input type="text" id="register-email" name="email" required>
+
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" name="password" required>
+
+                        <label for="register-confirm-password"> Confirm Password</label>
+                        <input type="password" id="register-confirm-password" name="confirm-password" required>
+
+                        <button type="submit">Register</button>
+                        <span>&nbsp;</span>
+                    </form>
+                </div>
+                <% } %>
+
+                    <script>
+                        const $ = el => document.querySelector(el)
+                        const loginForm = $('#login-form')
+                        const loginSpan = $('#login-form span')
+
+                        const registerForm = $('#register-form')
+                        const registerSpan = $('#register-form span')
+
+                        const logoutButton = $('#close-session')
+
+                        loginForm?.addEventListener('submit', e => {
+                            e.preventDefault()
+                            const username = $('#login-username').value
+                            const email = $('#login-email').value
+                            const password = $('#login-password').value
+
+                            fetch('/login', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ username, email, password })
+                            }).then(res => {
+                                if (res.ok) {
+                                    loginSpan.innerText = 'Sesión iniciada... Entrando...'
+                                    loginSpan.style.color = 'green'
+                                    setTimeout(() => {
+                                        window.location.href = '/protected'
+                                    }, 2000)
+                                } else {
+                                    loginSpan.innerText = 'Error al iniciar sesión'
+                                    loginSpan.style.color = 'red'
+                                }
+                            })
+
+                        })
+
+                        registerForm?.addEventListener('submit', e => {
+                            e.preventDefault()
+                            const username = $('#register-username').value
+                            const email = $('#register-email').value
+                            const password = $('#register-password').value
+                            const confirmPassword = $('#register-confirm-password').value
+
+                            if (password !== confirmPassword) {
+                                alert('Las contraseñas no coinciden')
+                                return
+                            }
+
+                            fetch('/register', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ username, email, password })
+                            }).then(res => {
+                                if (res.ok) {
+                                    registerSpan.innerText = 'Registro exitoso... Entrando...'
+                                    registerSpan.style.color = 'green'
+                                    setTimeout(() => {
+                                        window.location.href = '/protected'
+                                    }, 2000)
+                                } else {
+                                    registerSpan.innerText = 'Error al registrar'
+                                    registerSpan.style.color = 'red'
+                                }
+                            })
+                        })
+
+                        logoutButton?.addEventListener('click', e => {
+                            e.preventDefault()
+                            console.log('Cerrando sesión...')
+                            fetch('/logout', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            }).then(res => {
+                                console.log(res)
+                                window.location.href = '/'
+                            })
+                        })
+
+                    </script>
+</body>
+
+</html>
